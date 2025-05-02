@@ -1,0 +1,3 @@
+pnpm run lint-staged
+pnpm run madge-circular
+pnpm test
