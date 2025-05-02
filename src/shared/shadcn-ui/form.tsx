@@ -1,7 +1,7 @@
 'use client';
 
 import * as LabelPrimitive from '@radix-ui/react-label';
-import {Slot} from '@radix-ui/react-slot';
+import { Slot } from '@radix-ui/react-slot';
 import * as React from 'react';
 import {
   Controller,
@@ -12,8 +12,8 @@ import {
   type FieldValues,
 } from 'react-hook-form';
 
-import {cn} from '@shared/shadcn-lib/utils';
-import {Label} from './label';
+import { cn } from '@shared/shadcn-lib/utils';
+import { Label } from './label';
 
 const Form = FormProvider;
 
@@ -163,8 +163,9 @@ export {
   FormDescription,
   FormField,
   FormItem,
-  // eslint-disable-next-line react-refresh/only-export-components
   FormLabel,
   FormMessage,
-  useFormField,
+  // eslint-disable-next-line react-refresh/only-export-components
+  useFormField
 };
+
