@@ -70,7 +70,3 @@ This project includes a full set of [shadcn UI](https://ui.shadcn.com/) componen
 import { Button } from "@shared/shadcn-ui/button";
 import { Input } from "@shared/shadcn-ui/input";
 ```
-
-## State Management
-
-This project uses [Zustand](https://github.com/pmndrs/zustand) for state management, providing a simple and efficient way to manage application state.
