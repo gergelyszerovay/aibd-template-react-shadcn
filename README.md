@@ -1,6 +1,6 @@
 # AIBD React Template
 
-This project provides a standardized React boilerplate template based on React 19 with Vite.
+This project provides a React boilerplate for vibe coding and AI-boosted development. Linting tools and pre-commit hooks are pre-configured to enforce the [AIBD Coding Guidelines](https://github.com/gergelyszerovay/aibd-coding-guidelines), ensuring code quality and consistency across your workflow.
 
 ## Features
 
@@ -11,11 +11,15 @@ This project provides a standardized React boilerplate template based on React 1
 - **TypeScript**: Type safety and improved developer experience
 - **Testing Setup**: Pre-configured with Vitest and Testing Library
 - **Shadcn UI Components**: Pre-installed, ready-to-use modern and accessible UI components
+- **React Router v7**: Declarative routing
+- **React Hook Form**: Flexible and extensible forms with validation
+- **Zod**: TypeScript-first schema validation
+- **Supabase Client**: Authentication and backend services
 
 ## Prerequisites
 
 - Node.js (latest LTS version recommended)
-- PNPM (`npm install -g pnpm`)
+- PNPM (`corepack enable pnpm`)
 
 ## Getting Started
 
