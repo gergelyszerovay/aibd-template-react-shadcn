@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import {cn} from '@shared/shadcn-lib/utils';
+import { cn } from '@shared/shadcn-lib/utils';
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
-  ({className, type, ...props}, ref) => {
+  ({ className, type, ...props }, ref) => {
     return (
       <input
         type={type}
@@ -19,4 +19,4 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
 );
 Input.displayName = 'Input';
 
-export {Input};
+export { Input };

@@ -3,7 +3,7 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import * as React from 'react';
 
-import {cn} from '@shared/shadcn-lib/utils';
+import { cn } from '@shared/shadcn-lib/utils';
 
 const TooltipProvider = TooltipPrimitive.Provider;
 
@@ -14,7 +14,7 @@ const TooltipTrigger = TooltipPrimitive.Trigger;
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
->(({className, sideOffset = 4, ...props}, ref) => (
+>(({ className, sideOffset = 4, ...props }, ref) => (
   <TooltipPrimitive.Portal>
     <TooltipPrimitive.Content
       ref={ref}
@@ -29,4 +29,4 @@ const TooltipContent = React.forwardRef<
 ));
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 
-export {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger};
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger };

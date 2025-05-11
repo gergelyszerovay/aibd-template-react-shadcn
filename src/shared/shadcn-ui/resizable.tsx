@@ -1,9 +1,9 @@
 'use client';
 
-import {GripVertical} from 'lucide-react';
+import { GripVertical } from 'lucide-react';
 import * as ResizablePrimitive from 'react-resizable-panels';
 
-import {cn} from '@shared/shadcn-lib/utils';
+import { cn } from '@shared/shadcn-lib/utils';
 
 const ResizablePanelGroup = ({
   className,
@@ -39,4 +39,4 @@ const ResizableHandle = ({
   </ResizablePrimitive.PanelResizeHandle>
 );
 
-export {ResizableHandle, ResizablePanel, ResizablePanelGroup};
+export { ResizableHandle, ResizablePanel, ResizablePanelGroup };

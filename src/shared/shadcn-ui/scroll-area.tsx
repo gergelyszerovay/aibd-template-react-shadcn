@@ -1,12 +1,12 @@
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import * as React from 'react';
 
-import {cn} from '@shared/shadcn-lib/utils';
+import { cn } from '@shared/shadcn-lib/utils';
 
 const ScrollArea = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
->(({className, children, ...props}, ref) => (
+>(({ className, children, ...props }, ref) => (
   <ScrollAreaPrimitive.Root
     ref={ref}
     className={cn('relative overflow-hidden', className)}
@@ -24,7 +24,7 @@ ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName;
 const ScrollBar = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
->(({className, orientation = 'vertical', ...props}, ref) => (
+>(({ className, orientation = 'vertical', ...props }, ref) => (
   <ScrollAreaPrimitive.ScrollAreaScrollbar
     ref={ref}
     orientation={orientation}
@@ -41,4 +41,4 @@ const ScrollBar = React.forwardRef<
 ));
 ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
 
-export {ScrollArea, ScrollBar};
+export { ScrollArea, ScrollBar };

@@ -2,6 +2,8 @@
 
 This project provides a React boilerplate for vibe coding and AI-boosted development. Linting tools and pre-commit hooks are pre-configured to enforce the [AIBD Coding Guidelines](https://github.com/gergelyszerovay/aibd-coding-guidelines), ensuring code quality and consistency across your workflow.
 
+> 📖 **Recommended Reading**: [Better Apps with Vibe Coding: 7-Step Coding Guidelines](https://www.aiboosted.dev/p/better-apps-with-vibe-coding-7-step-coding-guidelines) - Learn more about the principles behind this template.
+
 ## Features
 
 - **React 19**: Latest React version with improved performance and features
@@ -15,6 +17,17 @@ This project provides a React boilerplate for vibe coding and AI-boosted develop
 - **React Hook Form**: Flexible and extensible forms with validation
 - **Zod**: TypeScript-first schema validation
 - **Supabase Client**: Authentication and backend services
+
+The boilerplate comes pre-configured with a comprehensive set of enforcement tools (enforced by pre-commit hooks):
+
+- **ESLint**: Configured with strict TypeScript and React rules
+- **Sheriff**: Enforces module boundaries between features and shared code, preventing inappropriate dependencies.
+- **TypeScript type checking**: Ensures type safety across your codebase
+- **Husky and lint-staged**: Run validation before each commit:
+  - Linting of staged TypeScript files
+  - Automatic code formatting with Prettier
+  - Checking for circular dependencies
+  - Running unit tests to ensure nothing is broken
 
 ## Prerequisites
 
