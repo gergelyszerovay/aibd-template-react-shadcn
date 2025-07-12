@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 import { api } from '../../../services/api';
 import { useAuth } from '@features/shell/context/AuthContext';
-import { Toaster, toast } from 'sonner';
+import { toast } from 'sonner';
+import type { AxiosError } from 'axios';
 
 const loginSchema = z.object({
   email: z.string().email({ message: 'Invalid email' }),
@@ -42,8 +43,12 @@ export function LoginPage() {
         toast.error(res.error?.message ?? 'Invalid credentials');
       }
     },
-    onError: (err: any) => {
-      const msg = err.response?.data?.error?.message ?? err.message ?? 'Network error';
+    onError: (err: unknown) => {
+      const error = err as AxiosError<{ error?: { message?: string } }> | Error;
+      const msg =
+        (error as AxiosError<{ error?: { message?: string } }>)?.response?.data?.error?.message ??
+        error.message ??
+        'Network error';
       toast.error(msg);
     },
   });

@@ -1,19 +1,19 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
-interface User {
+type User = {
   id: string;
   email: string;
   name: string;
   role: string;
-}
+};
 
-interface AuthContextValue {
+type AuthContextValue = {
   token: string | null;
   user: User | null;
   login: (token: string, user: User) => void;
   logout: () => void;
   isAuthenticated: boolean;
-}
+};
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
