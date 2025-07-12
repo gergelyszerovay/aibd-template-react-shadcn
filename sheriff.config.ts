@@ -5,6 +5,8 @@ export const config: SheriffConfig = {
   modules: {
     'src/features/<feature>': ['feature'],
     'src/shared/<sharedFeature>': ['sharedFeature'],
+    'src/services/<sharedFeature>': ['sharedFeature'],
+    'src/services': ['sharedFeature'],
   },
   enableBarrelLess: true,
   depRules: {

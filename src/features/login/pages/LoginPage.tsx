@@ -1,12 +1,16 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
+import type { UseMutationResult } from '@tanstack/react-query';
 import { Loader2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
+import type { UseFormReturn, SubmitHandler } from 'react-hook-form';
+import type { ReactElement, FormEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 import { api } from '../../../services/api';
 import { useAuth } from '@features/shell/context/AuthContext';
-import { Toaster, toast } from 'sonner';
+import { toast } from 'sonner';
+import type { AxiosError } from 'axios';
 
 const loginSchema = z.object({
   email: z.string().email({ message: 'Invalid email' }),
@@ -15,15 +19,19 @@ const loginSchema = z.object({
 
 type LoginValues = z.infer<typeof loginSchema>;
 
-export function LoginPage() {
+export function LoginPage(): ReactElement {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const form = useForm<LoginValues>({
+  const form: UseFormReturn<LoginValues> = useForm<LoginValues>({
     resolver: zodResolver(loginSchema),
   });
 
-  const mutation = useMutation<{ success: boolean; data?: { token: string; expiresIn: number; user: { id: string; email: string; name: string; role: string } }; error?: { message: string } }, Error, LoginValues>({
+  const mutation: UseMutationResult<
+    { success: boolean; data?: { token: string; expiresIn: number; user: { id: string; email: string; name: string; role: string } }; error?: { message: string } },
+    Error,
+    LoginValues
+  > = useMutation<{ success: boolean; data?: { token: string; expiresIn: number; user: { id: string; email: string; name: string; role: string } }; error?: { message: string } }, Error, LoginValues>({
     mutationFn: async (values) => {
       const response = await api.post('/v1/auth/login', values);
       return response.data as {
@@ -42,13 +50,16 @@ export function LoginPage() {
         toast.error(res.error?.message ?? 'Invalid credentials');
       }
     },
-    onError: (err: any) => {
-      const msg = err.response?.data?.error?.message ?? err.message ?? 'Network error';
+    onError: (err: unknown) => {
+      const error = err as AxiosError<{ error?: { message?: string } }> | Error;
+      const msg = (error as AxiosError<{ error?: { message?: string } }>).response?.data?.error?.message ?? error.message ?? 'Network error';
       toast.error(msg);
     },
   });
 
-  const onSubmit = form.handleSubmit((values) => mutation.mutate(values));
+  const submitData: SubmitHandler<LoginValues> = (values) => mutation.mutate(values);
+
+  const onSubmit: FormEventHandler<HTMLFormElement> = form.handleSubmit(submitData);
 
   return (
     <div className="flex h-screen items-center justify-center bg-gray-50 dark:bg-gray-900">
