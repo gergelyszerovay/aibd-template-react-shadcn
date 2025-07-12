@@ -13,4 +13,14 @@ export default defineConfig({
       '@features': path.resolve(__dirname, './src/features'),
     },
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://sellersad.up.railway.app',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (p) => p,
+      },
+    },
+  },
 });

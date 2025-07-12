@@ -1,0 +1,118 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: AIBD TypeScript Coding Guidelines - Error Handling
+globs: 
+alwaysApply: true
+---
+
+# AIBD TypeScript Coding Guidelines
+
+## Error Handling
+
+Use a union type of the actual result or a standard Error object for operations that can fail. This approach is cleaner and more type-safe than using a wrapper Result type:
+
+```typescript
+// Define a type alias for the result of an operation that can fail
+type UserResult = User | Error;
+
+/**
+ * Schema for runtime validation of User data from API
+ */
+const UserResponseSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  email: z.string().email(),
+  age: z.number().min(0).optional(),
+});
+
+async function fetchUser(id: string): Promise<UserResult> {
+  try {
+    const response = await api.get(`/users/${id}`);
+    
+    // Use Zod to parse and validate the response data
+    return UserResponseSchema.parse(response.data);
+  } catch (error) {
+    // Check if this is a Zod validation error
+    if (error instanceof z.ZodError) {
+      return new Error(
+        `Invalid user data format: ${error.errors.map(e => `${e.path}: ${e.message}`).join(', ')}`
+      );
+    }
+    
+    // Handle other types of errors
+    return new Error(`Failed to fetch user with ID ${id}`);
+  }
+}
+```
+
+### Error Class Descendants
+
+Use Error subclasses in these scenarios:
+
+1. When errors are central to your domain model
+2. When you need strict typing for error properties
+3. For complex error hierarchies
+4. When errors are exposed in public APIs
+
+```typescript
+/**
+ * Base error class for application errors
+ * Use as foundation for more specific error types
+ */
+class AppError extends Error {
+  public readonly timestamp: Date;
+  
+  constructor(message: string) {
+    super(message);
+    this.name = this.constructor.name;
+    this.timestamp = new Date();
+    
+    // Fix prototype chain for proper instanceof checks
+    // Only needed in TypeScript/ES5 target
+    Object.setPrototypeOf(this, new.target.prototype);
+  }
+}
+
+/**
+ * Validation-specific error with typed properties
+ */
+class ValidationError extends AppError {
+  constructor(
+    message: string,
+    public readonly field: string,
+    public readonly value: unknown,
+    public readonly constraint: string
+  ) {
+    super(message);
+  }
+  
+  /**
+   * Helper method to format error for API responses
+   */
+  toResponseFormat(): Record<string, unknown> {
+    return {
+      field: this.field,
+      message: this.message,
+      constraint: this.constraint
+    };
+  }
+}
+
+// Usage example
+function validateUser(user: unknown): void {
+  // Validate email format
+  const email = (user as any)?.email;
+  if (typeof email !== 'string' || !email.includes('@')) {
+    throw new ValidationError(
+      'Invalid email format',
+      'email',
+      email,
+      'email-format'
+    );
+  }
+}
+```

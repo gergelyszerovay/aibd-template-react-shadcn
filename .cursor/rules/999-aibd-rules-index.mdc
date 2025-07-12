@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Índice de Regras AIBD
+
+Este arquivo serve como guia para a AI saber **quando** consultar cada uma das regras do projeto. Mantenha este arquivo auto attached para garantir respostas alinhadas ao padrão, sem poluir o contexto com todas as regras detalhadas.
+
+## Como usar
+- Sempre que a tarefa envolver um dos temas abaixo, consulte a(s) regra(s) correspondente(s) listadas.
+- Use este índice para decidir se deve anexar manualmente a regra detalhada ao contexto.
+
+---
+
+### 000-aibd-architecture.mdc
+**Quando consultar:**
+- Discussão sobre arquitetura de pastas, organização de features/shared, dependências entre módulos, estrutura de diretórios, proibições de barrel files.
+
+### 001-aibd-ts.mdc
+**Quando consultar:**
+- Dúvidas sobre nomenclatura de arquivos, organização de declarações, convenções de casing, documentação de variáveis.
+
+### 002-aibd-ts-types.mdc
+**Quando consultar:**
+- Definição de tipos, uso de type vs interface, importação de tipos, type guards, documentação de tipos.
+
+### 003-aibd-ts-function.mdc
+**Quando consultar:**
+- Declaração de funções, parâmetros, organização de funções, documentação de funções, uso de arrow functions.
+
+### 004-aibd-ts-errors.mdc
+**Quando consultar:**
+- Tratamento de erros, uso de Error/Result, subclasses de Error, padrões para validação e propagação de erros.
+
+### 005-aibd-ts-zod.mdc
+**Quando consultar:**
+- Validação de schemas, uso do Zod, organização de schemas, checks de compatibilidade de tipos.
+
+### 020-aibd-doc-prd.mdc
+**Quando consultar:**
+- Criação, revisão ou exigência de PRD (Product Requirements Document) para features.
+
+### 100-aibd-ts-react-shadcn.mdc
+**Quando consultar:**
+- Uso de componentes shadcn, importação correta, extensão/customização de UI, padrões de acessibilidade.
+
+### 101-aibd-blueprint-react-component.mdc
+**Quando consultar:**
+- Estrutura de componentes React, separação smart/UI, organização de arquivos, nomeação, testes de componentes.
+
+---
+
+Antes de iniciar, liste as regras que serão utilizadas e aguarde instruções para prosseguir.
+
+**Dica:**
+Se a dúvida/tarefa não se encaixa em nenhum dos tópicos acima, me informe antes de prosseguir e aguarde instrucoes. Caso contrário, anexe manualmente a regra relevante para garantir conformidade total.
+
+
+Sempre inicie sua resposta com `⏱️`

@@ -1,0 +1,44 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: AIBD TypeScript Coding Guidelines - React Radix UI and Shadcn Guidelines
+globs: 
+alwaysApply: true
+---
+
+# AIBD TypeScript Coding Guidelines
+
+## React Radix UI and Shadcn Guidelines
+
+This rule defines how to use and extend shadcn UI components in AIBD React projects.
+
+### Component Installation
+- All shadcn UI components are already installed in the codebase and available for import from the `@/components/ui` directory.
+- Do not re-install or duplicate shadcn components. Use the provided versions.
+
+### Importing shadcn Components
+- Always import shadcn UI components from the `@shared/shadcn-ui` directory using path aliases.
+- Example:
+  ```tsx
+  import { Button } from "@shared/shadcn-ui/button";
+  import { Input } from "@shared/shadcn-ui/input";
+  ```
+- Do not import directly from the `shadcn-ui` or `@radix-ui` packages in feature or app code.
+
+### Usage Guidelines
+- Use shadcn UI components as the primary building blocks for UI in features and shared components.
+- Compose shadcn components with Tailwind CSS utility classes for custom styling.
+- Do not modify the core shadcn component files directly. If you need to extend or override a component, create a wrapper or extension in your feature's `internal/` directory or in `shared/ui` if it is to be shared.
+- All custom UI components should follow the same API and accessibility patterns as shadcn components.
+
+### Accessibility
+- All UI components (including custom extensions) must meet WCAG 2.1 AA accessibility standards.
+- Use shadcn's built-in accessibility features and extend them as needed for your use case.
+
+### Enforcement
+- Code reviews must verify that only the pre-installed shadcn UI components are used and imported correctly.
+- Any new shared UI components must be placed in `shared/ui` and follow shadcn conventions.
+- Do not bypass or duplicate shadcn UI components in feature code. 

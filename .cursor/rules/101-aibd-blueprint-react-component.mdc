@@ -1,0 +1,81 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: AIBD TypeScript Coding Guidelines - React Component and File Structure Blueprint
+globs: 
+alwaysApply: true
+---
+
+# AIBD TypeScript Coding Guidelines
+
+## React Component and File Structure Blueprint
+
+### Smart Components vs UI Components
+
+- **Smart Components** (container, logic, or stateful components):
+  - Responsible for state management, data fetching, business logic, and connecting to services.
+  - Should not contain presentational markup except for layout wrappers.
+  - May compose one or more UI components.
+  - Must be placed at the feature root (e.g., `AdminSignIn.tsx`).
+  - File name should match the component name.
+
+- **UI Components** (presentational, dumb, or stateless components):
+  - Responsible only for rendering UI based on props.
+  - Must not contain business logic, state management, or side effects.
+  - Must be placed in the feature's `internal/` directory (e.g., `internal/AdminSignInFormUi.tsx`).
+  - File name must end with `Ui` (e.g., `AdminSignInFormUi.tsx`).
+
+- **Enforcement:** Code reviews must verify that smart and UI components are separated and follow this structure.
+
+**Example Directory:**
+```
+src/features/sign-in/
+├── AdminSignIn.tsx                 # Smart component
+└── internal/
+    ├── AdminSignInFormUi.tsx       # UI component
+    ├── handleSignInSubmit.ts       # Event handler
+    ├── handleSignInChange.ts
+    └── useSignInUi.ts              # Hook
+```
+
+---
+
+### No Embedded Functions, Hooks, or Handlers
+
+- All business logic, event handlers, and custom hooks must be defined in separate files, not inline within component files.
+- **Handlers** (e.g., `handleSignInSubmit`, `handleSignInChange`) must be placed in the `internal/` directory within the feature.
+- **Custom hooks** (e.g., `useSignInUi`) must be placed in the feature's `internal/` directory, and must end with `Ui` if they are for UI logic.
+- **UI-only helpers** may be placed in the `internal/` directory if they are purely presentational.
+- **Enforcement:** React component files should only contain the component definition and minimal prop destructuring. All logic and hooks must be imported.
+
+**Example Directory:**
+```
+src/features/sign-in/
+├── AdminSignIn.tsx
+└── internal/
+    ├── AdminSignInFormUi.tsx
+    ├── handleSignInSubmit.ts
+    ├── handleSignInChange.ts
+    └── useSignInUi.ts
+```
+
+---
+
+## File Structure and Naming
+
+- Each file must export a single React component, hook, or handler.
+- File name must match the exported symbol (e.g., `AdminSignIn.tsx` exports `AdminSignIn`).
+- Use PascalCase for component and hook files, camelCase for handler files.
+- UI components and UI hooks must end with `Ui` (e.g., `AdminSignInFormUi.tsx`, `useSignInUi.ts`).
+- No default exports except for components.
+
+---
+
+## Testing
+
+- All React component tests must use [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/).
+- Tests should focus on user interactions and observable behavior, not implementation details.
+- Prefer queries that reflect how users find elements (e.g., getByRole, getByLabelText, getByText).

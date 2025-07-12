@@ -1,0 +1,213 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: AIBD TypeScript Coding Guidelines - Type Declarations
+globs: 
+alwaysApply: true
+---
+
+# AIBD TypeScript Coding Guidelines
+
+## Type Declarations
+
+Use type aliases instead of interfaces for better consistency and flexibility. Type aliases provide all the capabilities of interfaces while being more flexible and having clearer syntax for complex types.
+
+```typescript
+// ❌ DON'T use interfaces
+interface User {
+  id: number;
+  name: string;
+}
+
+// ✅ DO use type aliases
+type User = {
+  id: number;
+  name: string;
+};
+```
+
+### Explicit Types
+
+Always use explicit type annotations for:
+
+- Function parameters
+- Function return types
+- Variable declarations
+- Class properties
+
+```typescript
+// ❌ DON'T rely on type inference
+const userData = {
+  id: 1,
+  name: "John",
+};
+
+function processUser(user) {
+  return user.id;
+}
+
+// ✅ DO use explicit type annotations
+type User = {
+  id: number;
+  name: string;
+};
+
+const userData: User = {
+  id: 1,
+  name: "John",
+};
+
+function processUser(user: User): number {
+  return user.id;
+}
+```
+
+Exceptions allowed for:
+
+1. Loop variables in simple `for` loops
+2. Variables with literal values when literal type is desired
+3. Object destructuring in typed function parameters
+
+```typescript
+// Acceptable exceptions:
+for (let i = 0; i < 10; i++) {
+  /* ... */
+}
+
+const TIMEOUT = 1000; // Literal type is desired
+
+function process({ id, name }: User): void {
+  /* ... */
+}
+```
+
+### Type Documentation
+
+Document types using TSDoc comments. For complex types, document both the type itself and its properties:
+
+```typescript
+/**
+ * Represents a user in the system
+ * @see UserService for CRUD operations
+ */
+type User = {
+  /** Unique identifier for the user */
+  id: number;
+  /** Full display name of the user */
+  name: string;
+  /**
+   * User's email address
+   * @deprecated Use `contactInfo.email` instead
+   */
+  email: string;
+  /**
+   * User's preference settings
+   * @defaultValue `{ theme: 'light', notifications: true }`
+   */
+  preferences: UserPreferences;
+};
+```
+
+Common TSDoc tags for types:
+
+- `@deprecated` - Marks type or property as deprecated
+- `@remarks` - Adds additional details
+- `@see` - References related code
+- `@since` - Version when introduced
+- `@defaultValue` - Documents default value (for properties)
+- `@example` - Provides usage examples
+
+````
+
+Note: The `@type` tag is not needed in TypeScript as the type information is already provided by type annotations.
+
+## Variable Declarations
+
+Clear and consistent variable declarations improve code readability and prevent common errors.
+
+### Single Variable Per Declaration
+
+Always declare each variable separately:
+
+```typescript
+// ❌ DON'T declare multiple variables in one statement
+let a, b;
+let x = 1,
+  y = 2;
+
+// ✅ DO declare each variable separately
+let a: number;
+let b: string;
+
+let x = 1;
+let y = 2;
+````
+
+### Type Imports
+
+Always use `import type` for type-only imports:
+
+```typescript
+// ❌ DON'T use regular imports for types
+import { UserProfile } from "./UserProfile";
+import { PaymentMethod } from "./PaymentMethod";
+
+// ✅ DO use import type for type-only imports
+import type { UserProfile } from "./UserProfile";
+import type { PaymentMethod } from "./PaymentMethod";
+
+// ✅ DO use regular imports for values/functions
+import { validateUser } from "./validateUser";
+import { processPayment } from "./processPayment";
+```
+
+This practice:
+
+1. Separates runtime from compile-time dependencies
+2. Improves tree-shaking
+3. Makes circular dependencies easier to spot
+
+Configure ESLint to enforce this:
+
+```json
+{
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "prefer": "type-imports",
+        "disallowTypeAnnotations": true
+      }
+    ]
+  }
+}
+```
+
+### Type Guards
+
+Implement type guards to safely work with union type results:
+
+```typescript
+// Type guard for checking if result is an error
+function isError(result: unknown): result is Error {
+  return result instanceof Error;
+}
+
+// Usage example
+async function displayUserProfile(userId: string): Promise<void> {
+  const result = await fetchUser(userId);
+  
+  if (isError(result)) {
+    // Handle error case
+    console.error(`Failed to load user: ${result.message}`);
+    // Display error notification to user
+    return;
+  }
+  
+  // Safe to use result as User here
+  console.log(`Loaded profile for ${result.name}`);
+}
+```

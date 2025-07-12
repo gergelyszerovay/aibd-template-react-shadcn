@@ -1,0 +1,130 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: AIBD TypeScript Coding Guidelines - Function Declarations
+globs: 
+alwaysApply: true
+---
+
+# AIBD TypeScript Coding Guidelines
+
+## Function Declarations
+
+### Function Parameters
+
+Prefer functions with a single parameter. When multiple parameters are needed, pass them as a single object with a type alias following the naming convention: `functionName` => `type functionNameParams`:
+
+```typescript
+// ❌ DON'T use multiple parameters
+function validateUser(
+  email: string,
+  age: number,
+  preferences: UserPreferences
+): ValidationResult {
+  // Implementation
+}
+
+// ✅ DO use a single object parameter with a clear type alias
+type ValidateUserParams = {
+  email: string;
+  age: number;
+  preferences: UserPreferences;
+};
+
+function validateUser(params: ValidateUserParams): ValidationResult {
+  const { email, age, preferences } = params;
+  // Implementation
+}
+```
+
+### Avoid Nested Functions
+
+Keep functions at the top level:
+
+```typescript
+// ❌ DON'T nest named functions
+function processUserData(data: User): void {
+  function validateEmail(): boolean {
+    return data.email.includes("@");
+  }
+
+  function formatName(): string {
+    return data.name.toUpperCase();
+  }
+
+  if (validateEmail()) {
+    console.log(formatName());
+  }
+}
+
+// ✅ DO keep functions at the top level
+function validateEmail(email: string): boolean {
+  return email.includes("@");
+}
+
+function formatName(name: string): string {
+  return name.toUpperCase();
+}
+
+function processUserData(data: User): void {
+  if (validateEmail(data.email)) {
+    console.log(formatName(data.name));
+  }
+}
+```
+
+Exceptions allowed for:
+
+1. Arrow functions in callbacks
+2. Array method callbacks
+3. React component methods
+
+```typescript
+// Acceptable nested functions:
+const numbers = [1, 2, 3].map((n) => n * 2);
+
+useEffect(() => {
+  const cleanup = () => {
+    // Cleanup logic
+  };
+  return cleanup;
+}, []);
+```
+
+### Function Documentation
+
+Document functions using TSDoc comments to describe their purpose, parameters, return values, and any important notes:
+
+```typescript
+/**
+ * Validates user data against business rules
+ *
+ * @remarks
+ * This function performs comprehensive validation including:
+ * - Email format
+ * - Age restrictions
+ * - Preference validation
+ *
+ * @param params - Validation parameters
+ * @returns Validation result with any error messages
+ * @throws {ValidationError} If the input is malformed
+ * @see UserService for related functionality
+ */
+function validateUser(params: ValidateUserParams): ValidationResult {
+  // Implementation
+}
+```
+
+Common TSDoc tags for functions:
+
+- `@param` - Documents function parameters
+- `@returns` - Documents return value
+- `@throws` - Documents exceptions that may be thrown
+- `@remarks` - Adds additional details
+- `@see` - References related code
+- `@deprecated` - Marks as deprecated
+- `@since` - Version when introduced
+- `@example` - Provides usage examples

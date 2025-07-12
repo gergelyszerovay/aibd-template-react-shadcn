@@ -1,0 +1,67 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: AIBD TypeScript Coding Guidelines - File Naming and Organization
+globs: 
+alwaysApply: true
+---
+# AIBD TypeScript Coding Guidelines
+
+## File Naming and Organization
+
+Consistent file naming makes code easier to find and understand. Clear organization within files helps developers quickly comprehend code structure.
+
+### File Naming Conventions
+
+Files should follow these naming rules:
+
+- One declaration per file
+- File name matches the declaration name exactly
+- Use `.ts` extension for all TypeScript files
+- Use appropriate casing:
+  - PascalCase for:
+    - Types representing objects
+    - Classes
+    - Namespaces
+    - Enums
+  - camelCase for:
+    - Function types
+    - Variable declarations
+    - Function declarations
+
+Examples:
+
+```
+UserProfile.ts        // Contains type or class UserProfile
+formatDate.ts         // Contains function formatDate
+HttpClient.ts         // Contains class HttpClient
+ValidationResult.ts   // Contains type ValidationResult
+```
+
+### Variable Documentation
+
+Use TSDoc to document variables. For multiple declarations, always split them into separate declarations to enable proper documentation:
+
+```typescript
+// ❌ DON'T use inline documentation for multiple declarations
+/** First counter */ let count1, /** Second counter */ count2;
+
+// ✅ DO split declarations for proper documentation
+/** First counter used for tracking primary iterations */
+let count1: number;
+
+/** Second counter used for nested loop iterations */
+let count2: number;
+```
+
+Common TSDoc tags for variables:
+
+- `@defaultValue` - Documents default value
+- `@deprecated` - Marks as deprecated
+- `@remarks` - Adds additional details
+- `@see` - References related code
+- `@since` - Version when introduced
+

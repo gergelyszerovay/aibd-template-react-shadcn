@@ -1,0 +1,104 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: AIBD TypeScript Coding Guidelines - Schema Validation
+globs: 
+alwaysApply: true
+---
+
+# AIBD TypeScript Coding Guidelines
+
+## Schema Validation
+
+Use Zod for all schema validation. Follow this pattern:
+
+1. Create a type definition file (e.g., `User.ts`):
+
+```typescript
+// User.ts
+/**
+ * Defines the structure of a User
+ */
+export type User = {
+  /** Unique identifier */
+  id: number;
+  /** User's full name */
+  name: string;
+  /** User's email address */
+  email: string;
+  /** User's age */
+  age?: number;
+};
+```
+
+2. Create a schema file (e.g., `UserSchema.ts`):
+
+```typescript
+// UserSchema.ts
+import { z } from "zod";
+import type { User } from "./User";
+
+/**
+ * Schema for runtime validation of User type
+ */
+export const UserSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  email: z.string().email(),
+  age: z.number().min(0).optional(),
+});
+
+// Type compatibility checks, don't export them
+const UserSchemaExhaustiveCheck: z.infer<typeof UserSchema> = {} as User;
+const UserSchemaReverseCheck: User = {} as z.infer<typeof UserSchema>;
+
+function validateUser(data: unknown): User {
+  return UserSchema.parse(data);
+}
+```
+
+Schema organization guidelines:
+
+1. Define types explicitly, do not use `z.infer`
+2. Add type compatibility checks:
+   - Name compatibility checks with the format `{TypeName}SchemaExhaustiveCheck` and `{TypeName}SchemaReverseCheck`
+   - Use both exhaustive and reverse type checks
+3. Compose schemas for reusability
+
+Example of schema composition:
+
+```typescript
+// AddressSchema.ts
+import { z } from "zod";
+
+export type Address = {
+  street: string;
+  city: string;
+  zipCode: string;
+};
+
+export const AddressSchema = z.object({
+  street: z.string(),
+  city: z.string(),
+  zipCode: z.string().regex(/^\d{5}(-\d{4})?$/, "Invalid ZIP code"),
+});
+
+export const AddressSchemaExhaustiveCheck: z.infer<typeof AddressSchema> =
+  {} as Address;
+export const AddressSchemaReverseCheck: Address = {} as z.infer<
+  typeof AddressSchema
+>;
+
+// UserSchema.ts with composed schemas
+import { AddressSchema, Address } from "./AddressSchema";
+
+export const UserSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  email: z.string().email(),
+  address: AddressSchema,
+});
+```

@@ -1,0 +1,118 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: AIBD Documentation Guidelines - Feature level PRDs (Product Requirements Documents)
+globs: 
+alwaysApply: true
+---
+
+# AIBD Documentation Guidelines
+
+## Feature level PRDs (Product Requirements Documents)
+
+## Purpose
+Every feature must include a `prd.md` file in its root directory. This document serves as the single source of truth for the feature's business and technical requirements, ensuring alignment between product, design, and engineering.
+
+## Structure & Required Sections
+
+A valid PRD must include the following sections, in this order:
+
+1. **Title**
+   - `# Product Requirements Document (PRD)`
+2. **Feature Name**
+   - `## Feature: <Feature Name>`
+3. **Objective**
+   - A concise statement describing the purpose and business value of the feature.
+4. **User Stories**
+   - A bulleted list of user stories, each starting with "As a <role>, I want <goal> so that <reason>."
+5. **Requirements**
+   - **Functional:** Numbered list of functional requirements, grouped by subtopic if needed (e.g., Form Fields, Validation, Submission, Security).
+   - **Non-Functional:** Bulleted list of non-functional requirements (e.g., performance, responsiveness, styling, testing).
+6. **Acceptance Criteria**
+   - Checklist of criteria that must be met for the feature to be considered complete. Each should be testable and map to requirements/user stories.
+7. **Out of Scope**
+   - Bulleted list of items explicitly not included in this feature.
+
+## Authoring & Review Guidelines
+- Write in clear, unambiguous language.
+- Use Markdown formatting for all sections and lists.
+- All requirements must be specific, actionable, and testable.
+- Acceptance criteria must be directly traceable to requirements and user stories.
+- PRDs must be reviewed and approved before feature implementation begins.
+- Any changes to the PRD after implementation starts must be tracked and justified.
+
+## Example
+
+```markdown
+# Product Requirements Document (PRD)
+
+## Feature: Admin Sign In Form
+
+---
+
+### Objective
+Enable administrators to securely sign in to the admin dashboard using their email and password, leveraging Supabase authentication.
+
+---
+
+### User Stories
+- **As an admin**, I want to sign in with my email and password so that I can access the admin dashboard.
+- **As an admin**, I want to see clear error messages if I enter invalid credentials or leave fields empty.
+- **As an admin**, I want to know when my sign-in request is being processed.
+
+---
+
+### Requirements
+
+#### Functional
+1. **Form Fields**
+   - Email (type: email)
+   - Password (type: password)
+2. **Validation**
+   - Both fields are required.
+   - Show field-level error messages below each input if validation fails.
+   - Do not use the native `required` attribute; handle validation in JavaScript.
+3. **Submission**
+   - On submit, disable all controls and show a loading spinner in the button.
+   - Authenticate using Supabase's `signInWithPassword`.
+   - If authentication fails, show the error message below the password field.
+   - If authentication succeeds, redirect to `/admin/dashboard`.
+4. **Accessibility**
+   - All form controls must be accessible via keyboard.
+   - Error messages must be screen-reader friendly.
+5. **Security**
+   - Do not expose sensitive error details.
+   - Do not persist credentials in local storage or logs.
+
+#### Non-Functional
+- **Performance:** Form should respond instantly to user input and show loading state during authentication.
+- **Responsiveness:** The form must be usable on both desktop and mobile devices.
+- **Styling:** Use DaisyUI (with Tailwind) and match the app's current theme (light or dark as configured).
+- **Testing:** Unit and integration tests must cover rendering, validation, error handling, and Supabase integration.
+
+---
+
+### Acceptance Criteria
+- [x] Admin can enter email and password and submit the form.
+- [x] Both fields are required; errors are shown below the relevant input.
+- [x] On submit, controls are disabled and a loading spinner is shown.
+- [x] On success, admin is redirected to `/admin/dashboard`.
+- [x] On failure, a clear error is shown below the password field.
+- [x] The form is accessible and responsive.
+- [x] All requirements are covered by automated tests.
+
+---
+
+### Out of Scope
+- Password reset functionality.
+- Social login.
+- Multi-factor authentication.
+```
+
+## Enforcement
+- All new features must include a `prd.md` file following this structure.
+- Code reviews must verify that the PRD is present, complete, and up-to-date for every feature.
+- PRDs must be kept in sync with the implemented feature and updated as requirements evolve.
