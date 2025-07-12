@@ -1,9 +1,16 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
+interface User {
+  id: string;
+  email: string;
+  name: string;
+  role: string;
+}
+
 interface AuthContextValue {
   token: string | null;
-  userId: string | null;
-  login: (token: string, userId: string) => void;
+  user: User | null;
+  login: (token: string, user: User) => void;
   logout: () => void;
   isAuthenticated: boolean;
 }
@@ -12,34 +19,37 @@ const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(null);
-  const [userId, setUserId] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
-  // Initialize from localStorage
+  // Initialize from localStorage (token & userId only)
   useEffect(() => {
     setToken(localStorage.getItem('authToken'));
-    setUserId(localStorage.getItem('userId'));
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      setUser({ id: storedUserId, email: '', name: '', role: '' });
+    }
   }, []);
 
-  const login = (newToken: string, newUserId: string) => {
+  const login = (newToken: string, newUser: User) => {
     localStorage.setItem('authToken', newToken);
-    localStorage.setItem('userId', newUserId);
+    localStorage.setItem('userId', newUser.id);
     setToken(newToken);
-    setUserId(newUserId);
+    setUser(newUser);
   };
 
   const logout = () => {
     localStorage.removeItem('authToken');
     localStorage.removeItem('userId');
     setToken(null);
-    setUserId(null);
+    setUser(null);
   };
 
   const value: AuthContextValue = {
     token,
-    userId,
+    user,
     login,
     logout,
-    isAuthenticated: Boolean(token && userId),
+    isAuthenticated: Boolean(token && user?.id),
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -29,11 +29,16 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    const status = error.response?.status;
+    const requestUrl: string = error.config?.url ?? '';
+
+    if (status === 401 && !requestUrl.includes('/auth/login')) {
+      // Token expirado ou inválido em rota protegida → força logout
       localStorage.removeItem('authToken');
       localStorage.removeItem('userId');
       window.location.href = '/login';
     }
+
     return Promise.reject(error);
   },
 );
