@@ -85,7 +85,7 @@ src/
 pnpm install
 
 # Setup environment (optional, only if using Supabase)
-cp .env-sample .env
+cp .env.sample .env
 # Add your Supabase URL and anon key to .env
 
 # Start dev server (runs on http://127.0.0.1:4300)
