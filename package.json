@@ -152,6 +152,15 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "supabase"
-    ]
+    ],
+    "overrides": {
+      "esbuild@<=0.24.2": ">=0.25.0",
+      "@babel/runtime@<7.26.10": ">=7.26.10",
+      "brace-expansion@>=1.0.0 <=1.1.11": ">=1.1.12",
+      "brace-expansion@>=2.0.0 <=2.0.1": ">=2.0.2",
+      "js-yaml@>=4.0.0 <4.1.1": ">=4.1.1",
+      "diff@<8.0.3": ">=8.0.3",
+      "tar@<=7.5.2": ">=7.5.3"
+    }
   }
 }
