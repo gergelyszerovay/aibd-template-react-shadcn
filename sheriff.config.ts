@@ -1,4 +1,4 @@
-import {SheriffConfig} from '@softarc/sheriff-core';
+import { SheriffConfig } from '@softarc/sheriff-core';
 
 export const config: SheriffConfig = {
   entryFile: './src/index.ts',
@@ -7,6 +7,7 @@ export const config: SheriffConfig = {
     'src/shared/<sharedFeature>': ['sharedFeature'],
   },
   enableBarrelLess: true,
+  encapsulationPattern: /^[^/]+\/.+/,
   depRules: {
     noTag: 'feature',
     root: 'feature',

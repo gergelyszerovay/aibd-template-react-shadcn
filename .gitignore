@@ -31,3 +31,7 @@ debug
 .env
 graph.svg
 .specstory
+.transport
+.host
+*storybook.log
+storybook-static

@@ -1,0 +1,691 @@
+components:
+  - import: '@shared/shadcn-ui/Accordion'
+    exports:
+      - name: Accordion
+        description: Root component for creating collapsible accordion sections
+      - name: AccordionContent
+        description: Container for accordion panel content with animation
+      - name: AccordionItem
+        description: Individual accordion item wrapper
+      - name: AccordionTrigger
+        description: Button to toggle accordion panel with chevron icon
+
+  - import: '@shared/shadcn-ui/AlertDialog'
+    exports:
+      - name: AlertDialog
+        description: Root component for modal alert dialogs
+      - name: AlertDialogAction
+        description: Primary action button within alert dialog
+      - name: AlertDialogCancel
+        description: Cancel/dismiss button for alert dialog
+      - name: AlertDialogContent
+        description: Main content container for alert dialog
+      - name: AlertDialogDescription
+        description: Descriptive text within alert dialog
+      - name: AlertDialogFooter
+        description: Footer section containing action buttons
+      - name: AlertDialogHeader
+        description: Header section for title and description
+      - name: AlertDialogOverlay
+        description: Dark backdrop overlay behind dialog
+      - name: AlertDialogPortal
+        description: Portal component for rendering dialog outside DOM hierarchy
+      - name: AlertDialogTitle
+        description: Title heading for alert dialog
+      - name: AlertDialogTrigger
+        description: Button/element to open the alert dialog
+
+  - import: '@shared/shadcn-ui/Alert'
+    exports:
+      - name: Alert
+        description: Alert notification container with variant styles (default/destructive)
+      - name: AlertDescription
+        description: Text content area for alert messages
+      - name: AlertTitle
+        description: Heading text for alert notifications
+
+  - import: '@shared/shadcn-ui/AspectRatio'
+    exports:
+      - name: AspectRatio
+        description: Container to maintain consistent aspect ratio for media content
+
+  - import: '@shared/shadcn-ui/Avatar'
+    exports:
+      - name: Avatar
+        description: Root container for avatar images with rounded styling
+      - name: AvatarFallback
+        description: Fallback content when avatar image fails to load
+      - name: AvatarImage
+        description: Image component within avatar container
+
+  - import: '@shared/shadcn-ui/Badge'
+    exports:
+      - name: Badge
+        description: Small label component with variant styles (default/secondary/destructive/outline)
+
+  - import: '@shared/shadcn-ui/Breadcrumb'
+    exports:
+      - name: Breadcrumb
+        description: Navigation component showing current page hierarchy
+      - name: BreadcrumbEllipsis
+        description: Ellipsis indicator for collapsed breadcrumb items
+      - name: BreadcrumbItem
+        description: Individual breadcrumb navigation item
+      - name: BreadcrumbLink
+        description: Clickable link within breadcrumb navigation
+      - name: BreadcrumbList
+        description: Ordered list container for breadcrumb items
+      - name: BreadcrumbPage
+        description: Current page indicator in breadcrumb trail
+      - name: BreadcrumbSeparator
+        description: Visual separator between breadcrumb items
+
+  - import: '@shared/shadcn-ui/Button'
+    exports:
+      - name: Button
+        description: Interactive button with multiple variants (default/destructive/outline/secondary/ghost/link) and sizes
+
+  - import: '@shared/shadcn-ui/Calendar'
+    exports:
+      - name: Calendar
+        description: Date picker calendar component with month/year navigation
+
+  - import: '@shared/shadcn-ui/Card'
+    exports:
+      - name: Card
+        description: Container card component with border and shadow
+      - name: CardContent
+        description: Main content area within card
+      - name: CardDescription
+        description: Descriptive subtitle text in card
+      - name: CardFooter
+        description: Footer section for card actions
+      - name: CardHeader
+        description: Header section containing title and description
+      - name: CardTitle
+        description: Primary title heading for card
+
+  - import: '@shared/shadcn-ui/Carousel'
+    exports:
+      - name: Carousel
+        description: Root carousel container with touch/keyboard navigation
+      - name: CarouselContent
+        description: Scrollable container for carousel slides
+      - name: CarouselItem
+        description: Individual slide within carousel
+      - name: CarouselNext
+        description: Next slide navigation button
+      - name: CarouselPrevious
+        description: Previous slide navigation button
+
+  - import: '@shared/shadcn-ui/Chart'
+    exports:
+      - name: ChartContainer
+        description: Responsive container for Recharts chart components
+      - name: ChartLegend
+        description: Legend component for chart data visualization
+      - name: ChartLegendContent
+        description: Custom styled legend content component
+      - name: ChartStyle
+        description: Dynamic CSS styles for chart theming
+      - name: ChartTooltip
+        description: Tooltip component for chart data points
+      - name: ChartTooltipContent
+        description: Custom styled tooltip content with formatting
+
+  - import: '@shared/shadcn-ui/Checkbox'
+    exports:
+      - name: Checkbox
+        description: Checkbox input with checked/unchecked states
+
+  - import: '@shared/shadcn-ui/Collapsible'
+    exports:
+      - name: Collapsible
+        description: Root component for collapsible content sections
+      - name: CollapsibleContent
+        description: Content area that expands/collapses
+      - name: CollapsibleTrigger
+        description: Button to toggle collapsible state
+
+  - import: '@shared/shadcn-ui/Command'
+    exports:
+      - name: Command
+        description: Command palette/menu root container
+      - name: CommandDialog
+        description: Dialog wrapper for command palette interface
+      - name: CommandEmpty
+        description: Empty state message when no results found
+      - name: CommandGroup
+        description: Grouped section within command menu
+      - name: CommandInput
+        description: Search input field for filtering commands
+      - name: CommandItem
+        description: Individual selectable command option
+      - name: CommandList
+        description: Scrollable list container for command items
+      - name: CommandSeparator
+        description: Visual divider between command groups
+      - name: CommandShortcut
+        description: Keyboard shortcut display component
+
+  - import: '@shared/shadcn-ui/ContextMenu'
+    exports:
+      - name: ContextMenu
+        description: Root component for right-click context menus
+      - name: ContextMenuCheckboxItem
+        description: Checkbox item within context menu
+      - name: ContextMenuContent
+        description: Popup container for context menu items
+      - name: ContextMenuGroup
+        description: Grouped section of menu items
+      - name: ContextMenuItem
+        description: Individual menu item option
+      - name: ContextMenuLabel
+        description: Label/heading within menu sections
+      - name: ContextMenuPortal
+        description: Portal for rendering menu outside DOM hierarchy
+      - name: ContextMenuRadioGroup
+        description: Radio button group within menu
+      - name: ContextMenuRadioItem
+        description: Radio button item in menu
+      - name: ContextMenuSeparator
+        description: Visual divider between menu items
+      - name: ContextMenuShortcut
+        description: Keyboard shortcut display in menu
+      - name: ContextMenuSub
+        description: Submenu container component
+      - name: ContextMenuSubContent
+        description: Content for submenu items
+      - name: ContextMenuSubTrigger
+        description: Trigger to open submenu
+      - name: ContextMenuTrigger
+        description: Element that opens context menu on right-click
+
+  - import: '@shared/shadcn-ui/Dialog'
+    exports:
+      - name: Dialog
+        description: Root modal dialog component
+      - name: DialogClose
+        description: Close button for dialog
+      - name: DialogContent
+        description: Main content container with overlay
+      - name: DialogDescription
+        description: Descriptive text in dialog
+      - name: DialogFooter
+        description: Footer section for action buttons
+      - name: DialogHeader
+        description: Header section for title and description
+      - name: DialogOverlay
+        description: Dark backdrop overlay behind dialog
+      - name: DialogPortal
+        description: Portal for rendering dialog outside DOM
+      - name: DialogTitle
+        description: Title heading for dialog
+      - name: DialogTrigger
+        description: Button/element to open dialog
+
+  - import: '@shared/shadcn-ui/Drawer'
+    exports:
+      - name: Drawer
+        description: Root component for bottom sheet/drawer interface
+      - name: DrawerClose
+        description: Close button for drawer
+      - name: DrawerContent
+        description: Main content container with handle
+      - name: DrawerDescription
+        description: Descriptive text in drawer
+      - name: DrawerFooter
+        description: Footer section for actions
+      - name: DrawerHeader
+        description: Header section with title
+      - name: DrawerOverlay
+        description: Dark backdrop behind drawer
+      - name: DrawerPortal
+        description: Portal for rendering drawer
+      - name: DrawerTitle
+        description: Title heading for drawer
+      - name: DrawerTrigger
+        description: Element to open drawer
+
+  - import: '@shared/shadcn-ui/DropdownMenu'
+    exports:
+      - name: DropdownMenu
+        description: Root component for dropdown menus
+      - name: DropdownMenuCheckboxItem
+        description: Checkbox option in dropdown
+      - name: DropdownMenuContent
+        description: Popup container for menu items
+      - name: DropdownMenuGroup
+        description: Grouped menu items section
+      - name: DropdownMenuItem
+        description: Individual menu option
+      - name: DropdownMenuLabel
+        description: Label/heading in menu
+      - name: DropdownMenuPortal
+        description: Portal for rendering menu
+      - name: DropdownMenuRadioGroup
+        description: Radio button group in menu
+      - name: DropdownMenuRadioItem
+        description: Radio button option
+      - name: DropdownMenuSeparator
+        description: Visual divider between items
+      - name: DropdownMenuShortcut
+        description: Keyboard shortcut display
+      - name: DropdownMenuSub
+        description: Submenu container
+      - name: DropdownMenuSubContent
+        description: Submenu items container
+      - name: DropdownMenuSubTrigger
+        description: Trigger for opening submenu
+      - name: DropdownMenuTrigger
+        description: Button to open dropdown menu
+
+  - import: '@shared/shadcn-ui/Form'
+    exports:
+      - name: Form
+        description: Root form provider component (FormProvider from react-hook-form)
+      - name: FormControl
+        description: Wrapper for form input controls
+      - name: FormDescription
+        description: Help text for form fields
+      - name: FormField
+        description: Field controller component from react-hook-form
+      - name: FormItem
+        description: Container for individual form field
+      - name: FormLabel
+        description: Label component for form inputs
+      - name: FormMessage
+        description: Error/validation message display
+
+  - import: '@shared/shadcn-ui/HoverCard'
+    exports:
+      - name: HoverCard
+        description: Root component for hover-triggered popups
+      - name: HoverCardContent
+        description: Popup content displayed on hover
+      - name: HoverCardTrigger
+        description: Element that triggers hover card
+
+  - import: '@shared/shadcn-ui/Input'
+    exports:
+      - name: Input
+        description: Text input field with styling and validation states
+
+  - import: '@shared/shadcn-ui/InputOtp'
+    exports:
+      - name: InputOTP
+        description: Root OTP (one-time password) input container
+      - name: InputOTPGroup
+        description: Group of OTP input slots
+      - name: InputOTPSeparator
+        description: Visual separator between OTP groups
+      - name: InputOTPSlot
+        description: Individual character input slot for OTP
+
+  - import: '@shared/shadcn-ui/Label'
+    exports:
+      - name: Label
+        description: Form label component with styling
+
+  - import: '@shared/shadcn-ui/Menubar'
+    exports:
+      - name: Menubar
+        description: Root horizontal menubar component
+      - name: MenubarCheckboxItem
+        description: Checkbox menu item
+      - name: MenubarContent
+        description: Popup menu content container
+      - name: MenubarGroup
+        description: Grouped menu items wrapper
+      - name: MenubarItem
+        description: Individual menu option
+      - name: MenubarLabel
+        description: Label/heading in menu
+      - name: MenubarMenu
+        description: Individual menu within menubar
+      - name: MenubarPortal
+        description: Portal for rendering menu outside DOM
+      - name: MenubarRadioGroup
+        description: Radio button group in menu
+      - name: MenubarRadioItem
+        description: Radio button menu item
+      - name: MenubarSeparator
+        description: Visual divider in menu
+      - name: MenubarShortcut
+        description: Keyboard shortcut display
+      - name: MenubarSub
+        description: Submenu container
+      - name: MenubarSubContent
+        description: Submenu items container
+      - name: MenubarSubTrigger
+        description: Trigger for opening submenu
+      - name: MenubarTrigger
+        description: Button to open menu
+
+  - import: '@shared/shadcn-ui/NavigationMenu'
+    exports:
+      - name: NavigationMenu
+        description: Root component for navigation menu systems
+      - name: NavigationMenuContent
+        description: Content container for menu items
+      - name: NavigationMenuIndicator
+        description: Active item indicator
+      - name: NavigationMenuItem
+        description: Individual navigation item
+      - name: NavigationMenuLink
+        description: Link component within navigation
+      - name: NavigationMenuList
+        description: List container for menu items
+      - name: NavigationMenuTrigger
+        description: Trigger button for menu dropdown
+      - name: NavigationMenuViewport
+        description: Viewport for menu content positioning
+
+  - import: '@shared/shadcn-ui/Pagination'
+    exports:
+      - name: Pagination
+        description: Root pagination navigation component
+      - name: PaginationContent
+        description: Container for pagination controls
+      - name: PaginationEllipsis
+        description: Ellipsis for skipped pages
+      - name: PaginationItem
+        description: Individual pagination item wrapper
+      - name: PaginationLink
+        description: Clickable page number link
+      - name: PaginationNext
+        description: Next page navigation button
+      - name: PaginationPrevious
+        description: Previous page navigation button
+
+  - import: '@shared/shadcn-ui/Popover'
+    exports:
+      - name: Popover
+        description: Root popover component
+      - name: PopoverAnchor
+        description: Anchor element for positioning popover
+      - name: PopoverContent
+        description: Popup content container
+      - name: PopoverTrigger
+        description: Element to open popover
+
+  - import: '@shared/shadcn-ui/Progress'
+    exports:
+      - name: Progress
+        description: Progress bar component showing completion percentage
+
+  - import: '@shared/shadcn-ui/RadioGroup'
+    exports:
+      - name: RadioGroup
+        description: Root container for radio button group
+      - name: RadioGroupItem
+        description: Individual radio button option
+
+  - import: '@shared/shadcn-ui/Resizable'
+    exports:
+      - name: ResizableHandle
+        description: Draggable handle between resizable panels
+      - name: ResizablePanel
+        description: Resizable panel section
+      - name: ResizablePanelGroup
+        description: Container for resizable panel layout
+
+  - import: '@shared/shadcn-ui/ScrollArea'
+    exports:
+      - name: ScrollArea
+        description: Scrollable container with custom scrollbar
+      - name: ScrollBar
+        description: Custom styled scrollbar component
+
+  - import: '@shared/shadcn-ui/Select'
+    exports:
+      - name: Select
+        description: Root select dropdown component
+      - name: SelectContent
+        description: Dropdown content container
+      - name: SelectGroup
+        description: Grouped options section
+      - name: SelectItem
+        description: Individual selectable option
+      - name: SelectLabel
+        description: Label/heading for option groups
+      - name: SelectScrollDownButton
+        description: Button to scroll down options
+      - name: SelectScrollUpButton
+        description: Button to scroll up options
+      - name: SelectSeparator
+        description: Visual divider between options
+      - name: SelectTrigger
+        description: Button to open select dropdown
+      - name: SelectValue
+        description: Display component for selected value
+
+  - import: '@shared/shadcn-ui/Separator'
+    exports:
+      - name: Separator
+        description: Visual divider line (horizontal/vertical)
+
+  - import: '@shared/shadcn-ui/Sheet'
+    exports:
+      - name: Sheet
+        description: Root component for slide-out sheet/panel
+      - name: SheetClose
+        description: Close button for sheet
+      - name: SheetContent
+        description: Main content container with animations
+      - name: SheetDescription
+        description: Descriptive text in sheet
+      - name: SheetFooter
+        description: Footer section for actions
+      - name: SheetHeader
+        description: Header section with title
+      - name: SheetOverlay
+        description: Dark backdrop behind sheet
+      - name: SheetPortal
+        description: Portal for rendering sheet
+      - name: SheetTitle
+        description: Title heading for sheet
+      - name: SheetTrigger
+        description: Element to open sheet
+
+  - import: '@shared/shadcn-ui/Sidebar'
+    exports:
+      - name: Sidebar
+        description: Root collapsible sidebar container with variants (sidebar/floating/inset)
+      - name: SidebarContent
+        description: Main scrollable content area
+      - name: SidebarFooter
+        description: Footer section at bottom
+      - name: SidebarGroup
+        description: Grouped section of menu items
+      - name: SidebarGroupAction
+        description: Action button for group
+      - name: SidebarGroupContent
+        description: Content wrapper for group items
+      - name: SidebarGroupLabel
+        description: Label/heading for group
+      - name: SidebarHeader
+        description: Header section at top
+      - name: SidebarInput
+        description: Search input field styled for sidebar
+      - name: SidebarInset
+        description: Main content area when sidebar is present
+      - name: SidebarMenu
+        description: Menu list container
+      - name: SidebarMenuAction
+        description: Action button for menu items
+      - name: SidebarMenuBadge
+        description: Badge/counter display on menu items
+      - name: SidebarMenuButton
+        description: Interactive menu button with variants
+      - name: SidebarMenuItem
+        description: Individual menu item wrapper
+      - name: SidebarMenuSkeleton
+        description: Loading skeleton for menu items
+      - name: SidebarMenuSub
+        description: Submenu container
+      - name: SidebarMenuSubButton
+        description: Button for submenu items
+      - name: SidebarMenuSubItem
+        description: Individual submenu item wrapper
+      - name: SidebarProvider
+        description: Context provider for sidebar state
+      - name: SidebarRail
+        description: Draggable rail for resizing sidebar
+      - name: SidebarSeparator
+        description: Visual divider within sidebar
+      - name: SidebarTrigger
+        description: Button to toggle sidebar visibility
+
+  - import: '@shared/shadcn-ui/Skeleton'
+    exports:
+      - name: Skeleton
+        description: Loading placeholder component with pulse animation
+
+  - import: '@shared/shadcn-ui/Slider'
+    exports:
+      - name: Slider
+        description: Range slider input component
+
+  - import: '@shared/shadcn-ui/Sonner'
+    exports:
+      - name: Toaster
+        description: Toast notification container component from Sonner library
+
+  - import: '@shared/shadcn-ui/Switch'
+    exports:
+      - name: Switch
+        description: Toggle switch component for on/off states
+
+  - import: '@shared/shadcn-ui/Table'
+    exports:
+      - name: Table
+        description: Root table container with overflow handling
+      - name: TableBody
+        description: Table body section
+      - name: TableCaption
+        description: Table caption/description
+      - name: TableCell
+        description: Individual table cell
+      - name: TableFooter
+        description: Table footer section
+      - name: TableHead
+        description: Table header cell
+      - name: TableHeader
+        description: Table header section
+      - name: TableRow
+        description: Table row component
+
+  - import: '@shared/shadcn-ui/Tabs'
+    exports:
+      - name: Tabs
+        description: Root tabs container component
+      - name: TabsContent
+        description: Content panel for each tab
+      - name: TabsList
+        description: Container for tab triggers
+      - name: TabsTrigger
+        description: Button to switch between tabs
+
+  - import: '@shared/shadcn-ui/Textarea'
+    exports:
+      - name: Textarea
+        description: Multi-line text input component
+
+  - import: '@shared/shadcn-ui/Toggle'
+    exports:
+      - name: Toggle
+        description: Toggle button component with pressed/unpressed states
+
+  - import: '@shared/shadcn-ui/ToggleGroup'
+    exports:
+      - name: ToggleGroup
+        description: Root container for grouped toggle buttons
+      - name: ToggleGroupItem
+        description: Individual toggle button within group
+
+  - import: '@shared/shadcn-ui/Tooltip'
+    exports:
+      - name: Tooltip
+        description: Root tooltip component
+      - name: TooltipContent
+        description: Popup content displayed on hover
+      - name: TooltipProvider
+        description: Context provider for tooltip configuration
+      - name: TooltipTrigger
+        description: Element that triggers tooltip on hover
+
+nonComponentExports:
+  - import: '@shared/shadcn-ui/Badge'
+    exports:
+      - name: badgeVariants
+        type: function
+        description: Class Variance Authority (CVA) function for badge styling variants
+      - name: BadgeProps
+        type: type
+        description: TypeScript type definition for Badge component props
+
+  - import: '@shared/shadcn-ui/Button'
+    exports:
+      - name: buttonVariants
+        type: function
+        description: CVA function for button styling variants
+      - name: ButtonProps
+        type: type
+        description: TypeScript type definition for Button component props
+
+  - import: '@shared/shadcn-ui/Calendar'
+    exports:
+      - name: CalendarProps
+        type: type
+        description: TypeScript type extending DayPicker component props
+
+  - import: '@shared/shadcn-ui/Carousel'
+    exports:
+      - name: CarouselApi
+        type: type
+        description: TypeScript type for carousel API instance from Embla Carousel
+
+  - import: '@shared/shadcn-ui/Chart'
+    exports:
+      - name: ChartConfig
+        type: type
+        description: TypeScript type for chart configuration object with labels/colors/themes
+
+  - import: '@shared/shadcn-ui/Form'
+    exports:
+      - name: useFormField
+        type: hook
+        description: Custom React hook for accessing form field context and validation state
+
+  - import: '@shared/shadcn-ui/NavigationMenu'
+    exports:
+      - name: navigationMenuTriggerStyle
+        type: cva
+        description: CVA function for navigation menu trigger button styling
+
+  - import: '@shared/shadcn-ui/Sidebar'
+    exports:
+      - name: useSidebar
+        type: hook
+        description: Custom React hook for accessing sidebar context (state, open, toggle functions)
+
+  - import: '@shared/shadcn-ui/Toggle'
+    exports:
+      - name: toggleVariants
+        type: cva
+        description: CVA function for toggle button styling variants
+
+shadcnHooks:
+  - import: '@shared/shadcn-hooks/UseMobile'
+    exports:
+      - name: useIsMobile
+        type: hook
+        description: Custom React hook that detects if viewport width is below mobile breakpoint (768px)
+
+shadcnLib:
+  - import: '@shared/shadcn-lib/utils'
+    exports:
+      - name: cn
+        type: function
+        description: Utility function that merges Tailwind CSS classes using clsx and tailwind-merge

@@ -1,4 +1,0 @@
-pnpm run lint-staged
-pnpm run typecheck
-pnpm run madge-circular
-pnpm test

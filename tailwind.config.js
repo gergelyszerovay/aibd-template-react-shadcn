@@ -1,7 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ['class'],
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}', 
+   // Storybook configuration files
+    "./.storybook/**/*.{js,ts,jsx,tsx}",
+
+    // Story files (critical for HMR)
+    "./src/**/*.stories.{js,ts,jsx,tsx}",
+    "./stories/**/*.{js,ts,jsx,tsx,mdx}",    
+  ],
   theme: {
     extend: {
       borderRadius: {
