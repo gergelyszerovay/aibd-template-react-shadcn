@@ -1,6 +1,4 @@
-# React + Supabase Boilerplate
-
-React boilerplate optimized for AI-Boosted Development (AIBD) prototyping with Supabase, TypeScript, and feature-based architecture.
+# React boilerplate for AI-Boosted Development (AIBD) and prototyping with TypeScript, TailwindCSS, Shadcn, Storybook, Supabase, and feature-based architecture
 
 ## Tech Stack
 
